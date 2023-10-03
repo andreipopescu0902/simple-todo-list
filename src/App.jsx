@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./TodoItem"
+import { TodoItem } from "./TodoItem";
 
 function App() {
     const [newTodoName, setNewTodoName] = useState("");
@@ -44,7 +44,9 @@ function App() {
                     return (
                         <TodoItem
                             key={todo.id}
-                            {...todo}
+                            id={todo.id}
+                            name={todo.name}
+                            completed={todo.completed}
                             toggleTodo={toggleTodo}
                             deleteTodo={deleteTodo}
                         />
@@ -53,8 +55,7 @@ function App() {
             </ul>
 
             <div id="new-todo-form">
-                {JSON.stringify(todos)}
-                <label for="todo-input">New todo</label>
+                <label htmlFor="todo-input">New todo</label>
                 <input
                     type="text"
                     id="todo-input"
